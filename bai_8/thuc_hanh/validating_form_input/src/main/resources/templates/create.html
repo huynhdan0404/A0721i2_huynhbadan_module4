@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Create customer</title>
+</head>
+<body>
+<h1>Create customer</h1>
+<p>
+    <a href="/blogs">Customer list</a>
+</p>
+<!--<th:block th:if="${message}">-->
+<!--    <p th:text="${message}"></p>-->
+<!--</th:block>-->
+<form th:action="@{/create-user}" th:object="${user}" method="post">
+    <table>
+        <!--        <tr>-->
+        <!--            <td>Id:</td>-->
+        <!--            <td><input type="text" th:field="*{id}"/></td>-->
+        <!--        </tr>-->
+        <tr>
+            <td>user Name:</td>
+            <td>
+                <input type="text" th:field="*{name}"/>
+            </td>
+            <td>
+                <p class="text-danger" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</p>
+            </td>
+        </tr>
+        <tr>
+            <td>Age:</td>
+            <td>
+                <input type="text" th:field="*{age}">
+            </td>
+            <td>
+                <p class="text-danger" th:if="${#fields.hasErrors('age')}" th:errors="*{age}">Name Error</p>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Create user"></td>
+        </tr>
+
+    </table>
+</form>
+</body>
+</html>

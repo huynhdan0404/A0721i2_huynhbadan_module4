@@ -15,6 +15,10 @@
 <form th:action="@{/create-blog}" th:object="${blog}" method="post">
     <table>
         <tr>
+            <td>Id:</td>
+            <td><input type="text" th:field="*{id}"/></td>
+        </tr>
+        <tr>
             <td>Name:</td>
             <td><input type="text" th:field="*{name}"/></td>
         </tr>
@@ -30,6 +34,7 @@
             <td></td>
             <td><input type="submit" value="Create blog"></td>
         </tr>
+
     </table>
 </form>
 </body>
