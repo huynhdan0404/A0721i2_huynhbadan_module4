@@ -27,10 +27,22 @@ public class BlogController {
     @GetMapping("/blogs")
     public ResponseEntity<Iterable<Blog>> getBlogList(){
         List<Blog> blogs = (List<Blog>) blogService.findAll();
+//        List<Content> contents = (List<Content>) contentService.findAll();
         if (blogs.isEmpty()){
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
         return new ResponseEntity<>(blogs,HttpStatus.OK);
+
+    }
+
+    @GetMapping("/categorys")
+    public ResponseEntity<Iterable<Content>> getContentList(){
+//        List<Blog> blogs = (List<Blog>) blogService.findAll();
+        List<Content> contents = (List<Content>) contentService.findAll();
+        if (contents.isEmpty()){
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(contents,HttpStatus.OK);
 
     }
 

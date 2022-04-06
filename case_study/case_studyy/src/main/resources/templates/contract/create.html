@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Create customer</title>
+</head>
+<body>
+<h1>Tạo hợp đồng mới</h1>
+<p>
+    <a href="/contract/contracts">Danh sách hợp đồng</a>
+</p>
+<form th:action="@{/contract/create-contract}" th:object="${contract}" method="post">
+    <table>
+        <tr>
+            <td>Ngày bắt đầu:</td>
+            <td><input type="date" th:field="*{startDate}"/></td>
+        </tr>
+        <tr>
+            <td>Ngày kết thúc:</td>
+            <td><input type="date" th:field="*{endDate}"/></td>
+        </tr>
+        <tr>
+            <td>Tiền đặt cọc:</td>
+            <td><input type="text" th:field="*{concactDeposit}"/></td>
+        </tr>
+        <tr>
+            <td>Tổng tiền:</td>
+            <td><input type="text" th:field="*{totalMoney}"/></td>
+        </tr>
+        <tr>
+            <td>Nhân viên:</td>
+            <td>
+            <select th:field="*{employee}">
+                <option th:each="employee : ${employees}" th:text="${employee.name}" th:value="${employee.id}"></option>
+            </select>
+            </td>
+        </tr>
+        <tr>
+            <td>Khách hàng:</td>
+            <td>
+                <select th:field="*{customer}">
+                    <option th:each="customer : ${customers}" th:text="${customer.name}" th:value="${customer.id}"></option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>Dịch vụ:</td>
+            <td>
+                <select th:field="*{service}">
+                    <option th:each="service : ${services}" th:text="${service.name}" th:value="${service.id}"></option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Tạo mới"></td>
+        </tr>
+
+    </table>
+</form>
+</body>
+</html>

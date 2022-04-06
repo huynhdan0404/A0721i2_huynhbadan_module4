@@ -16,6 +16,7 @@ public class BaiHat {
 
     @NotEmpty(message = " khong duoc de trong")
     @Size(max = 800, message = "khong dc qua 800 ky tu")
+//    @Pattern(regexp = "[a-bA-b0-1 ]",message = "khong duoc chua ki tu dat biet")
     private String name;
 
     @NotEmpty(message = " khong duoc de trong")

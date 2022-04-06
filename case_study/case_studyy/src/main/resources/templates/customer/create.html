@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Create customer</title>
+</head>
+<body>
+<h1>Tạo khách hàng mới</h1>
+<p>
+    <a href="/customers">Danh sách khách hàng</a>
+</p>
+<!--<th:block th:if="${message}">-->
+<!--    <p th:text="${message}"></p>-->
+<!--</th:block>-->
+<form th:action="@{/create-customer}" th:object="${customer}" method="post">
+    <table>
+        <tr>
+            <td>Tên:</td>
+            <td><input type="text" th:field="*{name}"/></td>
+        </tr>
+        <tr>
+            <td>Loại khách:</td>
+            <td>
+            <select th:field="*{customerType}">
+                <option th:each="customerType : ${customerTypes}" th:text="${customerType.name}" th:value="${customerType.id}"></option>
+            </select>
+            </td>
+        </tr>
+        <tr>
+            <td>Ngày sinh:</td>
+            <td><input type="date" th:field="*{birthday}"/></td>
+        </tr>
+        <tr>
+            <td>Giới tính:</td>
+<!--            <td><input type="text" th:field="*{gender}"/></td>-->
+            <td>
+                <select th:field="*{gender}" name="" id="" >
+                    <option value="nam">name</option>
+                    <option value="nu">nu</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>Id card:</td>
+            <td>
+                <input type="text" th:field="*{idCard}"/>
+                <span class="text-danger" th:if="${#fields.hasErrors('idCard')}" th:errors="*{idCard}">Name Error</span>
+            </td>
+
+        </tr>
+        <tr>
+            <td>Số điện thoại:</td>
+            <td>
+                <input type="number" th:field="*{phone}"/>
+                <span class="text-danger" th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}">Name Error</span>
+            </td>
+        </tr>
+        <tr>
+            <td>Email:</td>
+            <td><input type="email" th:field="*{mail}"/></td>
+        </tr>
+        <tr>
+            <td>Địa chỉ:</td>
+            <td><input type="text" th:field="*{address}"/></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Tạo mới"></td>
+        </tr>
+
+    </table>
+</form>
+</body>
+</html>

@@ -1,5 +1,7 @@
 package com.example.blog_restful.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -12,6 +14,7 @@ public class Content {
 
 
     @OneToMany(mappedBy = "id")
+    @JsonBackReference
     private Set<Blog> blogs;
 
     public Content() {

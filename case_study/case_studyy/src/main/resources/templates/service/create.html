@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Create customer</title>
+</head>
+<body>
+<h1>Tạo khách hàng mới</h1>
+<p>
+    <a href="/servicess/services">Danh sách dịch vụ</a>
+</p>
+<!--<th:block th:if="${message}">-->
+<!--    <p th:text="${message}"></p>-->
+<!--</th:block>-->
+<form th:action="@{/servicess/create-customer}" th:object="${service}" method="post">
+    <table>
+        <tr>
+            <td>Tên dịch vụ:</td>
+            <td><input type="text" th:field="*{name}"/></td>
+        </tr>
+        <tr>
+            <td>Diện tích:</td>
+            <td><input type="text" th:field="*{area}"/></td>
+        </tr>
+        <tr>
+            <td>Phí dịch vụ:</td>
+            <td><input type="text" th:field="*{serviceCost}"/></td>
+        </tr>
+        <tr>
+            <td>Số người tối đa:</td>
+            <td><input type="text" th:field="*{maxPeople}"/></td>
+        </tr>
+        <tr>
+            <td>Kiểu thuê:</td>
+            <td>
+            <select th:field="*{rentType}">
+                <option th:each="rentype : ${rentTypes}" th:text="${rentype.name}" th:value="${rentype.id}"></option>
+            </select>
+            </td>
+        </tr>
+        <tr>
+            <td>Loại dịch vụ:</td>
+            <td>
+                <select th:field="*{serviceType}">
+                    <option th:each="servicetype : ${serviceTypes}" th:text="${servicetype.name}" th:value="${servicetype.id}"></option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>Tiêu chuẩn phòng:</td>
+            <td><input type="text" th:field="*{standardRoom}"/></td>
+        </tr>
+        <tr>
+            <td>Tiện ích khác:</td>
+            <td><input type="text" th:field="*{descriptionConvenience}"/></td>
+        </tr>
+        <tr>
+            <td>Diện tích hồ bơi:</td>
+            <td><input type="text" th:field="*{poolArea}"/></td>
+        </tr>
+        <tr>
+            <td>Số tầng:</td>
+            <td><input type="number" th:field="*{numberOfFloors}"/></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Tạo mới"></td>
+        </tr>
+
+    </table>
+</form>
+</body>
+</html>
